@@ -1,0 +1,24 @@
+variable "access_key" {
+  description = "your AWS access key"
+  default = // add key string here surrounded by double quotes
+}
+
+variable "secret_key" {
+  description = "your AWS secret key"
+  default = // add key string here surrounded by double quotes
+}
+
+variable "key_name" {
+  description = "the name of the SSH key to use. Must be uploaded to AWS manually"
+  default = // add key name here surrounded by double quotes
+}
+
+variable "key_file" {
+  description = "path to the private key file corresponding to key_name"
+  default = // add path here surrounded by double quotes
+}
+
+variable "name_prefix" {
+  description = "prefix to names of all resources created by this configuration"
+  default = "moio-suseq"
+}
