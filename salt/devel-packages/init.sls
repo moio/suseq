@@ -20,9 +20,11 @@ eclipse:
     - require:
       - file: eclipse
 
-/opt/eclipse/eclipse.ini:
-  file.patch:
-    - source: salt://suseq/devel-packages/gtk.patch
+patch-eclipse-config:
+  file.replace:
+    - name: /opt/eclipse/eclipse.ini
+    - pattern: "openfile\n--launcher.appendVmargs"
+    - repl: "openfile\n--launcher.GTK_version\n2\n--launcher.appendVmargs"
     - require:
       - cmd: eclipse
 
