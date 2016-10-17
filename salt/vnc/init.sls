@@ -20,5 +20,5 @@ novnc:
 
 launch-novnc:
   cmd.run:
-    - name: /opt/noVNC/utils/launch.sh --vnc localhost:5901
+    - name: /opt/noVNC/utils/launch.sh --vnc localhost:5901 --listen 80
     - unless: ps auxw | grep -i novnc
