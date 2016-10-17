@@ -10,12 +10,14 @@ tigervnc:
       
 vnc-password:
   file.managed:
-    - name: /home/user/.vnc/password
+    - name: /home/user/.vnc/passwd
     - source: salt://vnc/passwd
     - makedirs: True
     - source_hash: sha512=3d15c95d0b47e6686ef76d161e7bc738d60a9486d51d9329ca63dcea2b24dc7319bb0c7d8af37ae59f2ca7faf8cf714e89a36eadce9a5ece6b60d391f0c23169
     - user: user
     - group: users
+    - mode: 600
+    - unless: ls -l /home/user/.vnc/passwd
     - require:
       - cmd: tigervnc
 
