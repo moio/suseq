@@ -49,15 +49,6 @@ clone-netapi:
     - require:
       - sls: base-system
 
-clone-docker-demo:    
-  cmd.run:
-    - name: git clone https://github.com/mbologna/salt-docker-demo
-    - runas: user
-    - cwd: /home/user
-    - unless: ls /home/user/salt-docker-demo
-    - require:
-      - sls: base-system
-
 configure-eclipse-project:
   cmd.run:
     - name: "/opt/apache-maven-3.3.9/bin/mvn eclipse:eclipse"
@@ -67,39 +58,4 @@ configure-eclipse-project:
       - sls: base-system
       - cmd: clone-netapi
 
-docker-master:
-  cmd.run:
-    - name: "docker run -d --name saltmaster 
-      -v `pwd`/etc_master/salt:/etc/salt 
-      -p 8000:8000
-      -ti mbologna/saltstack-master"
-    - runas: user
-    - cwd: /home/user/salt-docker-demo
-    - unless: docker ps | grep saltmaster
-    - require:
-      - sls: docker
-      - sls: base-system
-
-docker-minion1:
-  cmd.run:
-    - name: "docker run -d --name saltminion1
-      --link saltmaster
-      -v `pwd`/etc_minion1/salt:/etc/salt mbologna/saltstack-minion"
-    - runas: user
-    - cwd: /home/user/salt-docker-demo
-    - unless: docker ps | grep saltminion1
-    - require:
-      - cmd: docker-master
-
-docker-minion2:
-  cmd.run:
-    - name: "docker run -d --name saltminion2
-      --link saltmaster
-      -v `pwd`/etc_minion2/salt:/etc/salt mbologna/saltstack-minion"
-    - runas: user
-    - cwd: /home/user/salt-docker-demo
-    - unless: docker ps | grep saltminion2
-    - require:
-      - cmd: docker-master
-  
 # import eclipse project
