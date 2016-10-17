@@ -18,7 +18,7 @@ vnc-password:
     - require:
       - cmd: tigervnc
 
-novnc:
+novnc-install:
   file.managed:
     - name: /opt/noVNC.zip
     - source: https://github.com/kanaka/noVNC/archive/v0.6.1.zip
@@ -26,11 +26,29 @@ novnc:
   cmd.run:
     - name: unzip /opt/noVNC.zip
     - cwd: /opt
-    - unless: ls /opt/noVNC
+    - unless: ls /opt/noVNC-0.6.1
     - require:
+<<<<<<< 5448a0d4080109441400854a2d39e6d649acb454
       - file: novnc
 
 launch-novnc:
   cmd.run:
     - name: /opt/noVNC/utils/launch.sh --vnc localhost:5901 --listen 80
     - unless: ps auxw | grep -i novnc
+=======
+      - file: novnc-install
+  
+novnc:
+  file.managed:
+    - name: /etc/systemd/system/novnc.service
+    - source: salt://vnc/novnc.service
+    - source_hash: sha512=84e569f2cbb112aa7eee6bb1c73c079db5609a45f43898941b55ec6902c654351dad7ef3184f7a52748b6adf18047332735f1b6156a3b67accea266fad5113fb
+    - unless: /etc/systemd/system/novnc.service
+    - require:
+      - sls: base-system
+  service.running:
+    - enable: True
+    - require:
+      - cmd: novnc-install
+      
+>>>>>>> Start noVNC as a service via systemd
