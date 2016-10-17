@@ -1,13 +1,3 @@
-tigervnc:
-  pkg.installed: []
-  cmd.run:
-    - name: vncserver -AlwaysShared -geometry 1680x1050 -geometry 1280x1024 -geometry 1280x800 -geometry 1024x768
-    - unless: ps auxw | grep vncserver
-    - user: user
-    - require:
-      - pkg: tigervnc
-      - sls: base-system
-      
 vnc-password:
   file.managed:
     - name: /home/user/.vnc/passwd
@@ -18,8 +8,24 @@ vnc-password:
     - group: users
     - mode: 600
     - unless: ls -l /home/user/.vnc/passwd
+
+tigervnc:
+  pkg.installed: []
+  file.managed:
+    - name: /etc/systemd/system/vnc.service
+    - source: salt://vnc/vnc.service
+    - source_hash: sha512=d14a4ff112206c792aa35a2815dd1305d20031a03a0ba11a58685df413f87bd8eb91792e23a29e9855fc9e32d469dc3f148e3c50c8457dfcef8027ebe851db28
+    - unless: /etc/systemd/system/vnc.service
     - require:
-      - cmd: tigervnc
+      - sls: base-system
+      - pkg: tigervnc
+  service.running:
+    - name: vnc
+    - enable: True
+    - require:
+      - file: /etc/systemd/system/vnc.service
+      - sls: base-system
+      - file: vnc-password
 
 novnc-install:
   file.managed:
@@ -40,6 +46,7 @@ launch-novnc:
     - unless: ps auxw | grep -i novnc
 =======
       - file: novnc-install
+      - service: vnc
   
 novnc:
   file.managed:
