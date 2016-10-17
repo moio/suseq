@@ -1,7 +1,7 @@
 tigervnc:
   pkg.installed: []
   cmd.run:
-    - name: vncserver -AlwaysShared &
+    - name: vncserver -AlwaysShared -geometry 1680x1050 -geometry 1280x1024 -geometry 1280x800 -geometry 1024x768
     - unless: ps auxw | grep vncserver
     - require:
       - pkg: tigervnc
