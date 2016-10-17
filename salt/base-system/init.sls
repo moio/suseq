@@ -1,6 +1,6 @@
-# upgrade all packages:
-#   pkg.uptodate:
-#     - refresh: True
+upgrade-all-packages:
+  pkg.uptodate:
+    - refresh: True
     
 user:
   user.present:
