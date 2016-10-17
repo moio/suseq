@@ -47,12 +47,12 @@ resource "aws_main_route_table_association" "vpc_internet" {
 
 resource "aws_security_group" "security_group" {
   name = "${var.name_prefix}-security-group"
-  description = "Allow inbound connections on port 8080, 22, >32768; allow all outbound connections"
+  description = "Allow inbound connections on port 6080, 22, 5901; allow all outbound connections"
   vpc_id = "${aws_vpc.main.id}"
 
   ingress {
-    from_port = 8080
-    to_port = 8080
+    from_port = 6080
+    to_port = 6080
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -65,8 +65,8 @@ resource "aws_security_group" "security_group" {
   }
   
   ingress {
-    from_port = 32768
-    to_port = 65535
+    from_port = 5901
+    to_port = 5901
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
