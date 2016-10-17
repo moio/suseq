@@ -5,7 +5,7 @@ include:
 git:
   pkg.installed
 
-java-1_8_0-openjdk-1.8.0:
+java-1_8_0-openjdk-devel:
   pkg.installed
 
 eclipse:
