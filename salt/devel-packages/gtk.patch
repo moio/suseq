@@ -1,0 +1,11 @@
+--- eclipse.ini	2016-10-07 19:01:00.000000000 +0200
++++ eclipse.ini.patch	2016-10-14 17:26:27.287186187 +0200
+@@ -10,6 +10,8 @@
+ org.eclipse.platform
+ --launcher.defaultAction
+ openFile
++--launcher.GTK_version
++2
+ --launcher.appendVmargs
+ -vmargs
+ -Dosgi.requiredJavaVersion=1.8
