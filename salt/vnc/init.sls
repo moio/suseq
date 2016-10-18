@@ -12,18 +12,18 @@ vnc-password:
 tigervnc:
   pkg.installed: []
   file.managed:
-    - name: /etc/systemd/system/vnc.service
-    - source: salt://vnc/vnc.service
-    - source_hash: sha512=d14a4ff112206c792aa35a2815dd1305d20031a03a0ba11a58685df413f87bd8eb91792e23a29e9855fc9e32d469dc3f148e3c50c8457dfcef8027ebe851db28
-    - unless: /etc/systemd/system/vnc.service
+    - name: /etc/systemd/system/vncserver.service
+    - source: salt://vnc/vncserver@:1.service
+    - source_hash: sha512=68ddf7364c2ddb04666a3e04c10afa19e1606931b062772bd998cb58fadae4dcc2fad512c665c2110f5036800100d77388558d04033b55497e92f099acc32e55
+    - unless: ls -l /etc/systemd/system/vncserver.service
     - require:
       - sls: base-system
       - pkg: tigervnc
   service.running:
-    - name: vnc
+    - name: vncserver.service
     - enable: True
     - require:
-      - file: /etc/systemd/system/vnc.service
+      - file: /etc/systemd/system/vncserver.service
       - sls: base-system
       - file: vnc-password
 
@@ -46,7 +46,7 @@ launch-novnc:
     - unless: ps auxw | grep -i novnc
 =======
       - file: novnc-install
-      - service: vnc
+      - service: vncserver.service
   
 novnc:
   file.managed:
@@ -60,5 +60,8 @@ novnc:
     - enable: True
     - require:
       - cmd: novnc-install
+<<<<<<< e782da14b18a68f883ba66afca50ff8d4a70e3e3
       
 >>>>>>> Start noVNC as a service via systemd
+=======
+>>>>>>> Proper starting tigerVNC with systemd
