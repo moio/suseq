@@ -21,7 +21,7 @@ configure-maven-dependencies:
 preconfigure-eclipse-dotfiles:
   file.recurse:
     - name: /home/user/.eclipse
-    - source: salt://devel-packages/eclipse-dotfiles
+    - source: salt://devel-netapi/eclipse-dotfiles
     - user: user
     - group: users
     - unless: ls -l /home/user/.eclipse
@@ -32,7 +32,7 @@ preconfigure-eclipse-dotfiles:
 preconfigure-eclipse-workspace:
   file.recurse:
     - name: /home/user/workspace
-    - source: salt://devel-packages/workspace
+    - source: salt://devel-netapi/workspace
     - user: user
     - group: users
     - unless: ls -l /home/user/workspace

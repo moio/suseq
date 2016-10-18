@@ -4,4 +4,5 @@ base:
     - base-system
     - graphical-system
     - devel-packages
+    - devel-netapi
     - vnc
