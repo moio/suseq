@@ -53,3 +53,8 @@ terraform get # populates modules
 terraform plan # show the provisioning plan
 terraform apply # bring up your systems, fasten your seatbelts!
 ```
+
+## Timings
+
+Please note that bringing up this machine on AWS will take roughly 25 minutes (based on our testing). Plan accordingly.
+
