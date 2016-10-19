@@ -11,7 +11,7 @@ salt-netapi-client-repo:
     - require:
       - sls: base-system
 
-configure-maven-dependencies:
+salt-netapi-client-dependencies:
   cmd.run:
     - name: "/opt/apache-maven-3.3.9/bin/mvn eclipse:eclipse"
     - user: user
@@ -20,20 +20,20 @@ configure-maven-dependencies:
       - sls: devel-packages
       - git: salt-netapi-client-repo
 
-preconfigure-eclipse-dotfiles:
+eclipse-dotfiles:
   file.recurse:
     - name: /home/user/.eclipse
     - source: salt://devel-netapi/eclipse-dotfiles
     - user: user
     - group: users
     - require:
-      - cmd: configure-maven-dependencies
+      - cmd: salt-netapi-client-dependencies
 
-preconfigure-eclipse-workspace:
+eclipse-workspace:
   file.recurse:
     - name: /home/user/workspace
     - source: salt://devel-netapi/workspace
     - user: user
     - group: users
     - require:
-      - cmd: configure-maven-dependencies
+      - cmd: salt-netapi-client-dependencies
