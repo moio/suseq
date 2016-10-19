@@ -1,5 +1,6 @@
 include:
   - base-system
+  - devel-packages
 
 clone-netapi:
   cmd.run:
@@ -8,7 +9,6 @@ clone-netapi:
     - cwd: /home/user
     - unless: ls /home/user/salt-netapi-client
     - require:
-      - sls: devel-packages
       - sls: base-system
 
 configure-maven-dependencies:
