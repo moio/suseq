@@ -26,7 +26,6 @@ preconfigure-eclipse-dotfiles:
     - source: salt://devel-netapi/eclipse-dotfiles
     - user: user
     - group: users
-    - unless: ls -l /home/user/.eclipse
     - require:
       - cmd: configure-maven-dependencies
 
@@ -36,6 +35,5 @@ preconfigure-eclipse-workspace:
     - source: salt://devel-netapi/workspace
     - user: user
     - group: users
-    - unless: ls -l /home/user/workspace
     - require:
       - cmd: configure-maven-dependencies
