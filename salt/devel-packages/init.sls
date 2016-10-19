@@ -1,7 +1,3 @@
-include:
-  - base-system
-  - docker
-
 git:
   pkg.latest
 
