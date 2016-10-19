@@ -1,5 +1,5 @@
 patterns-openSUSE-xfce:
-  pkg.installed
+  pkg.latest
 
 autostart-applications:
   file.recurse:

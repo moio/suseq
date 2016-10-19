@@ -3,10 +3,10 @@ include:
   - docker
 
 git:
-  pkg.installed
+  pkg.latest
 
 java-1_8_0-openjdk-devel:
-  pkg.installed
+  pkg.latest
 
 eclipse:
   file.managed:

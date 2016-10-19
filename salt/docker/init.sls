@@ -1,5 +1,5 @@
 docker:
-  pkg.installed: []
+  pkg.latest: []
   service.running:
     - enable: True
     - require:

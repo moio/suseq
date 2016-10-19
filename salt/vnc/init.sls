@@ -10,7 +10,7 @@ vnc-password:
     - unless: ls -l /home/user/.vnc/passwd
 
 tigervnc:
-  pkg.installed: []
+  pkg.latest: []
   file.managed:
     - name: /etc/systemd/system/vncserver.service
     - source: salt://vnc/vncserver@:1.service
