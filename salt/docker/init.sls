@@ -1,3 +1,6 @@
+include:
+  - base-system
+
 docker:
   pkg.latest: []
   service.running:
