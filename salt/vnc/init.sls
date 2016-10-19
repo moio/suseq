@@ -10,7 +10,6 @@ vnc-password:
     - user: user
     - group: users
     - mode: 600
-    - unless: ls -l /home/user/.vnc/passwd
     - require:
       - sls: base-system
 
@@ -20,7 +19,6 @@ tigervnc:
     - name: /etc/systemd/system/vncserver.service
     - source: salt://vnc/vncserver@:1.service
     - source_hash: sha512=68ddf7364c2ddb04666a3e04c10afa19e1606931b062772bd998cb58fadae4dcc2fad512c665c2110f5036800100d77388558d04033b55497e92f099acc32e55
-    - unless: ls -l /etc/systemd/system/vncserver.service
     - require:
       - sls: base-system
       - pkg: tigervnc
