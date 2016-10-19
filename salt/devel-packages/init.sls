@@ -12,7 +12,7 @@ eclipse:
     - archive_format: tar
     - if_missing: /opt/eclipse
 
-patch-eclipse-config:
+eclipse-config:
   file.replace:
     - name: /opt/eclipse/eclipse.ini
     - pattern: "openfile\n--launcher.appendVmargs"
