@@ -8,12 +8,12 @@ docker:
     - require:
       - pkg: docker  
       
-clone-docker-demo:    
-  cmd.run:
-    - name: git clone https://github.com/mbologna/salt-docker-demo
+salt-docker-demo-repo:
+  git.latest:
+    - name: https://github.com/mbologna/salt-docker-demo
+    - rev: master
+    - target: /home/user/salt-docker-demo
     - user: user
-    - cwd: /home/user
-    - unless: ls /home/user/salt-docker-demo
     - require:
       - sls: base-system
 
@@ -28,6 +28,7 @@ docker-master:
     - unless: docker ps | grep saltmaster
     - require:
       - service: docker
+      - git: salt-docker-demo-repo
       - sls: base-system
 
 docker-minion1:

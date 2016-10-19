@@ -2,12 +2,12 @@ include:
   - base-system
   - devel-packages
 
-clone-netapi:
-  cmd.run:
-    - name: git clone https://github.com/SUSE/salt-netapi-client
+salt-netapi-client-repo:
+  git.latest:
+    - name: https://github.com/SUSE/salt-netapi-client
+    - rev: master
+    - target: /home/user/salt-netapi-client
     - user: user
-    - cwd: /home/user
-    - unless: ls /home/user/salt-netapi-client
     - require:
       - sls: base-system
 
@@ -18,7 +18,7 @@ configure-maven-dependencies:
     - cwd: /home/user/salt-netapi-client
     - require:
       - sls: devel-packages
-      - cmd: clone-netapi
+      - git: salt-netapi-client-repo
 
 preconfigure-eclipse-dotfiles:
   file.recurse:
