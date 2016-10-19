@@ -14,7 +14,9 @@ vnc-password:
       - sls: base-system
 
 tigervnc:
-  pkg.latest: []
+  pkg.latest
+
+tigervnc-service:
   file.managed:
     - name: /etc/systemd/system/vncserver.service
     - source: salt://vnc/vncserver@:1.service
@@ -29,29 +31,23 @@ tigervnc:
       - file: /etc/systemd/system/vncserver.service
       - file: vnc-password
 
-novnc-install:
-  file.managed:
-    - name: /opt/noVNC.zip
+novnc:
+  archive.extracted:
+    - name: /opt/
     - source: https://github.com/kanaka/noVNC/archive/v0.6.1.zip
     - source_hash: sha512=9c6686a072ad9e16e98c0a0d3842b852f987c507d1537d8d5b47d5dc852af5cedb907feb88d4dc5465e83703e8172c6d610df90ae27a4c040dc94a7bf5b8bf7a
-  cmd.run:
-    - name: unzip /opt/noVNC.zip
-    - cwd: /opt
-    - unless: ls /opt/noVNC-0.6.1
-    - require:
-      - file: /opt/noVNC.zip
-  
-novnc:
+    - archive_format: zip
+    - if_missing: /opt/noVNC-0.6.1
+
+novnc-service:
   file.managed:
     - name: /etc/systemd/system/novnc.service
     - source: salt://vnc/novnc.service
     - source_hash: sha512=84e569f2cbb112aa7eee6bb1c73c079db5609a45f43898941b55ec6902c654351dad7ef3184f7a52748b6adf18047332735f1b6156a3b67accea266fad5113fb
-    - unless: /etc/systemd/system/novnc.service
-    - require:
-      - sls: base-system
   service.running:
+    - name: novnc.service
     - enable: True
     - require:
       - file: /etc/systemd/system/novnc.service
-      - cmd: novnc-install
-      - service: tigervnc
+      - archive: novnc
+      - service: tigervnc-service
