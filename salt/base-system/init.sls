@@ -4,8 +4,8 @@ upgrade-all-packages:
     
 user:
   user.present:
-    - fullname: Candidate User
-    - shell: /usr/bin/zsh
+    - fullname: Candidate for SUSE
+    - shell: /bin/bash
     - home: /home/user
     - password: interview
     - groups:
