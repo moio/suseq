@@ -30,7 +30,6 @@ output "aws_eclipse_host_public_name" {
   value = "${module.aws_eclipse_host.public_name}"
 }
 
-
-output "aws_eclipse_http_public_name" {
+output "aws_eclipse_url" {
   value = "http://${module.aws_eclipse_host.public_name}/vnc.html"
 }
