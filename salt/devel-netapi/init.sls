@@ -26,6 +26,7 @@ eclipse-dotfiles:
     - source: salt://devel-netapi/eclipse-dotfiles
     - user: user
     - group: users
+    - include_empty: true
     - require:
       - cmd: salt-netapi-client-dependencies
 
@@ -35,5 +36,6 @@ eclipse-workspace:
     - source: salt://devel-netapi/workspace
     - user: user
     - group: users
+    - include_empty: true
     - require:
       - cmd: salt-netapi-client-dependencies
