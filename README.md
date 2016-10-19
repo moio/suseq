@@ -2,6 +2,8 @@
 
 This [Terraform](https://www.terraform.io/) configuration is used to set up a temporary development environment for code interviews at SUSE.
 
+![SuSEq in action!](assets/img/suseq-in-action.png)
+
 Name is a homage to [Creedence Clearwater Revival](https://www.youtube.com/watch?v=6BRMnrkbvso).
 
 ## Requirements
