@@ -1,3 +1,6 @@
+include:
+  - base-system
+
 patterns-openSUSE-xfce:
   pkg.latest
 
@@ -10,6 +13,7 @@ autostart-applications:
     - unless: ls -l /home/user/.config/autostart
     - require:
       - pkg: patterns-openSUSE-xfce      
+      - sls: base-system
 
 configure-resolution:
   file.recurse:
@@ -20,3 +24,4 @@ configure-resolution:
     - unless: ls -l /home/user/.config/xfce4
     - require:
       - pkg: patterns-openSUSE-xfce      
+      - sls: base-system
