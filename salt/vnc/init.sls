@@ -37,16 +37,7 @@ novnc-install:
     - cwd: /opt
     - unless: ls /opt/noVNC-0.6.1
     - require:
-<<<<<<< 5448a0d4080109441400854a2d39e6d649acb454
-      - file: novnc
-
-launch-novnc:
-  cmd.run:
-    - name: /opt/noVNC/utils/launch.sh --vnc localhost:5901 --listen 80
-    - unless: ps auxw | grep -i novnc
-=======
-      - file: novnc-install
-      - service: vncserver.service
+      - file: /opt/noVNC.zip
   
 novnc:
   file.managed:
@@ -60,8 +51,4 @@ novnc:
     - enable: True
     - require:
       - cmd: novnc-install
-<<<<<<< e782da14b18a68f883ba66afca50ff8d4a70e3e3
-      
->>>>>>> Start noVNC as a service via systemd
-=======
->>>>>>> Proper starting tigerVNC with systemd
+      - service: vncserver.service
