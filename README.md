@@ -60,6 +60,13 @@ Share it with the interviewee.
 Password for members who control the screen is `interview`.
 Password for view-only public is `audience`.
 
+To destroy and re-create the whole environment use:
+
+```
+terraform taint -module=aws_eclipse_host aws_instance.instance
+terraform apply
+```
+
 ## Timings
 
 Please note that bringing up this machine on AWS will take roughly 25 minutes (based on our testing). Plan accordingly.
