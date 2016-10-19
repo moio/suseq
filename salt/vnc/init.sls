@@ -1,3 +1,6 @@
+include:
+  - base-system
+
 vnc-password:
   file.managed:
     - name: /home/user/.vnc/passwd
@@ -8,6 +11,8 @@ vnc-password:
     - group: users
     - mode: 600
     - unless: ls -l /home/user/.vnc/passwd
+    - require:
+      - sls: base-system
 
 tigervnc:
   pkg.latest: []
@@ -24,7 +29,6 @@ tigervnc:
     - enable: True
     - require:
       - file: /etc/systemd/system/vncserver.service
-      - sls: base-system
       - file: vnc-password
 
 novnc-install:
@@ -50,5 +54,6 @@ novnc:
   service.running:
     - enable: True
     - require:
+      - file: /etc/systemd/system/novnc.service
       - cmd: novnc-install
-      - service: vncserver.service
+      - service: tigervnc
