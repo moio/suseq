@@ -54,15 +54,12 @@ terraform plan # show the provisioning plan
 terraform apply # bring up your systems, fasten your seatbelts!
 ```
 
-## Usage (for interviewer)
-
 When Terraform has finished bringing up the machine on AWS it will output an URL to connect to via your browser.
 Share it with the interviewee.
-Password to access it is `interview`.
 
-Please note: there is also support for view-only public: just supply password `audience` when connecting.
+Password for members who control the screen is `interview`.
+Password for view-only public is `audience`.
 
 ## Timings
 
 Please note that bringing up this machine on AWS will take roughly 25 minutes (based on our testing). Plan accordingly.
-
