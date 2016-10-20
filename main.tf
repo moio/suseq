@@ -17,7 +17,7 @@ module "aws_eclipse_host" {
   availability_zone = "eu-central-1a"
   ami = "ami-426a8f2d" // openSUSE-Leap-42-1-v20160301-hvm-ssd-x86_64 in eu-central-1
   instance_type = "t2.medium"
-  volume_size = 20 // GiB
+  volume_size = 10 // GiB
   key_name = "${var.key_name}"
   key_file = "${var.key_file}"
   monitoring = true
