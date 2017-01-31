@@ -2,7 +2,7 @@
 Description=noVNC Service
 
 [Service]
-ExecStart=/opt/noVNC-0.6.1/utils/launch.sh --vnc localhost:5901 --listen 80
+ExecStart=/opt/noVNC-0.6.2/utils/launch.sh --vnc localhost:5901 --listen 80
 
 [Install]
 WantedBy=multi-user.target
