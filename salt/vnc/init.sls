@@ -34,10 +34,10 @@ tigervnc-service:
 novnc:
   archive.extracted:
     - name: /opt/
-    - source: https://github.com/kanaka/noVNC/archive/v0.6.1.zip
-    - source_hash: sha512=9c6686a072ad9e16e98c0a0d3842b852f987c507d1537d8d5b47d5dc852af5cedb907feb88d4dc5465e83703e8172c6d610df90ae27a4c040dc94a7bf5b8bf7a
+    - source: https://github.com/kanaka/noVNC/archive/v0.6.2.zip
+    - source_hash: sha512=245d205f8935c82722a55d6cfcd2cea1825176c0cd695fd0eec34aa19cdc3b766fed62e741ff41b0a8c4a3b3cbabc5a39dfa6ad8ffa6169f5b88420a4a845a7c
     - archive_format: zip
-    - if_missing: /opt/noVNC-0.6.1
+    - if_missing: /opt/noVNC-0.6.2
 
 novnc-service:
   file.managed:
