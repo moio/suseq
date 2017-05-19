@@ -23,7 +23,7 @@ eclipse-config:
 maven:
   archive.extracted:
     - name: /opt/
-    - source: http://mirror.nohup.it/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
-    - source_hash: https://www.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip.md5
+    - source: http://apache.panu.it/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip
+    - source_hash: https://www.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip.md5
     - archive_format: zip
-    - if_missing: /opt/apache-maven-3.3.9
+    - if_missing: /opt/apache-maven-3.5.0

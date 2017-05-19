@@ -13,8 +13,8 @@ salt-netapi-client-repo:
 
 salt-netapi-client-dependencies:
   cmd.run:
-    - name: "/opt/apache-maven-3.3.9/bin/mvn eclipse:eclipse"
-    - user: user
+    - name: "/opt/apache-maven-3.5.0/bin/mvn eclipse:eclipse"
+    - runas: user
     - cwd: /home/user/salt-netapi-client
     - require:
       - sls: devel-packages
