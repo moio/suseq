@@ -20,6 +20,13 @@ sudo zypper install terraform
 git clone https://github.com/moio/suseq.git
 ```
 
+OpenSUSE Leap 42.2:
+```
+sudo zypper addrepo http://download.opensuse.org/repositories/home:/SilvioMoioli:/tools/openSUSE_Leap_42.2/home:SilvioMoioli:tools.repo
+sudo zypper install terraform
+git clone https://github.com/moio/suseq.git
+```
+
 OpenSUSE Tumbleweed:
 ```
 sudo zypper addrepo http://download.opensuse.org/repositories/home:/SilvioMoioli:/tools/openSUSE_Tumbleweed/home:SilvioMoioli:tools.repo
