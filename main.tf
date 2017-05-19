@@ -1,21 +1,21 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = "us-east-1"
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
 }
 
 module "aws_network" {
   source = "./aws_network"
-  availability_zone = "eu-central-1a"
+  availability_zone = "us-east-1a"
   name_prefix = "${var.name_prefix}"
 }
 
 module "aws_eclipse_host" {
   source = "./aws_host"
   name = "eclipse-host"
-  region = "eu-central-1"
-  availability_zone = "eu-central-1a"
-  ami = "ami-426a8f2d" // openSUSE-Leap-42-1-v20160301-hvm-ssd-x86_64 in eu-central-1
+  region = "us-east-1"
+  availability_zone = "us-east-1a"
+  ami = "ami-eada30fc" // openSUSE-Leap-42.2-v20170118-hvm-ssd-x86_64-5535c495-72d4-4355-b169-54ffa874f849-ami-fded05eb.3
   instance_type = "t2.medium"
   volume_size = 10 // GiB
   key_name = "${var.key_name}"
