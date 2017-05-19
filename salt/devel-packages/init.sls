@@ -7,8 +7,8 @@ java-1_8_0-openjdk-devel:
 eclipse:
   archive.extracted:
     - name: /opt/
-    - source: http://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz
-    - source_hash: http://ftp.halifax.rwth-aachen.de/eclipse/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz.sha512
+    - source: http://eclipsemirror.itemis.de/eclipse/technology/epp/downloads/release/neon/3/eclipse-jee-neon-3-linux-gtk-x86_64.tar.gz
+    - source_hash: http://eclipsemirror.itemis.de/eclipse/technology/epp/downloads/release/neon/3/eclipse-jee-neon-3-linux-gtk-x86_64.tar.gz.sha512
     - archive_format: tar
     - if_missing: /opt/eclipse
 
