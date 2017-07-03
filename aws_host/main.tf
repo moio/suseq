@@ -10,7 +10,7 @@ resource "aws_instance" "instance" {
   root_block_device {
     volume_size = "${var.volume_size}"
   }
-  
+
   tags {
     Name = "${var.name_prefix}-${var.name}"
   }
@@ -20,7 +20,7 @@ resource "null_resource" "instance_salt_configuration" {
   triggers {
     instance_id = "${aws_instance.instance.id}"
   }
-  
+
   connection {
     host = "${aws_instance.instance.public_dns}"
     private_key = "${file(var.key_file)}"
@@ -32,11 +32,11 @@ resource "null_resource" "instance_salt_configuration" {
   }
 
   provisioner "remote-exec" {
-    inline = [
-      "zypper --non-interactive in salt-minion"
-    ]
-  }
-  
+  inline = [
+    "salt-call --local --file-root=/srv/salt/ --force-color state.highstate"
+  ]
+}
+
   provisioner "file" {
     content = <<EOF
 
