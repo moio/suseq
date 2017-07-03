@@ -26,3 +26,14 @@ docker-minions:
     - unless: docker ps | grep saltminion1
     - require:
       - cmd: docker-master
+
+user:
+  user.present:
+    - fullname: Candidate for SUSE
+    - shell: /bin/bash
+    - home: /home/user
+    - password: interview
+    - groups:
+      - docker
+    - require:
+      - pkg: docker
