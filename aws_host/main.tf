@@ -43,6 +43,7 @@ EOF
 
   provisioner "remote-exec" {
     inline = [
+      "salt-call --local --file-root=/srv/salt/ --force-color state.sls_id minimal_package_update default",
       "salt-call --local --file-root=/srv/salt/ --force-color state.highstate"
     ]
   }
