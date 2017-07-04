@@ -8,6 +8,12 @@ docker:
     - require:
       - pkg: docker
 
+add-user-to-docker-group:
+  user.present:
+    - name: user
+    - groups:
+      - docker
+
 docker-master:
   cmd.run:
     - name: "docker run -d --hostname saltmaster --name saltmaster -v `pwd`/srv/salt:/srv/salt -p 8000:8000 -ti mbologna/saltstack-master"
@@ -17,6 +23,7 @@ docker-master:
     - require:
       - service: docker
       - sls: base-system
+      - user: add-user-to-docker-group
 
 docker-minions:
   cmd.run:
@@ -26,14 +33,3 @@ docker-minions:
     - unless: docker ps | grep saltminion1
     - require:
       - cmd: docker-master
-
-user:
-  user.present:
-    - fullname: Candidate for SUSE
-    - shell: /bin/bash
-    - home: /home/user
-    - password: interview
-    - groups:
-      - docker
-    - require:
-      - pkg: docker

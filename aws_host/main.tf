@@ -31,12 +31,6 @@ resource "null_resource" "instance_salt_configuration" {
     destination = "/srv/salt"
   }
 
-  provisioner "remote-exec" {
-  inline = [
-    "salt-call --local --file-root=/srv/salt/ --force-color state.highstate"
-  ]
-}
-
   provisioner "file" {
     content = <<EOF
 
@@ -49,7 +43,7 @@ EOF
 
   provisioner "remote-exec" {
     inline = [
-      "salt-call --local state.highstate"
+      "salt-call --local --file-root=/srv/salt/ --force-color state.highstate"
     ]
   }
 }
