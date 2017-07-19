@@ -12,7 +12,7 @@ autostart-applications:
     - group: users
     - unless: ls -l /home/user/.config/autostart
     - require:
-      - pkg: patterns-openSUSE-xfce      
+      - pkg: patterns-openSUSE-xfce
       - sls: base-system
 
 configure-resolution:
@@ -23,5 +23,5 @@ configure-resolution:
     - group: users
     - unless: ls -l /home/user/.config/xfce4
     - require:
-      - pkg: patterns-openSUSE-xfce      
+      - pkg: patterns-openSUSE-xfce
       - sls: base-system
