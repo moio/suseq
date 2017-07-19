@@ -6,6 +6,7 @@ salt-netapi-client-repo:
   git.latest:
     - name: https://github.com/SUSE/salt-netapi-client
     - rev: interview
+    - force_reset: true
     - target: /home/user/salt-netapi-client
     - user: user
     - require:
