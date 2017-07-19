@@ -24,6 +24,7 @@ module "aws_eclipse_host" {
   subnet_id = "${module.aws_network.subnet_id}"
   security_group_id = "${module.aws_network.security_group_id}"
   name_prefix = "${var.name_prefix}"
+  interview_exercise_passphrase = "${var.interview_exercise_passphrase}"
 }
 
 output "aws_eclipse_host_public_name" {

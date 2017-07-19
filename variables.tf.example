@@ -18,6 +18,11 @@ variable "key_file" {
   default = // add path here surrounded by double quotes
 }
 
+variable "interview_exercise_passphrase" {
+  description = "GPG passphrase to decrypt interview exercises"
+  default = // add passphrase here surrounded by double quotes
+}
+
 variable "name_prefix" {
   description = "prefix to names of all resources created by this configuration"
   default = "moio-suseq"

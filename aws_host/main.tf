@@ -35,6 +35,7 @@ resource "null_resource" "instance_salt_configuration" {
     content = <<EOF
 
 hostname: ${aws_instance.instance.public_dns}
+interview_exercise_passphrase: ${var.interview_exercise_passphrase}
 
 EOF
 

@@ -53,6 +53,11 @@ variable "security_group_id" {
   type = "string"
 }
 
+variable "interview_exercise_passphrase" {
+  description = "GPG passphrase to decrypt interview exercises"
+  type = "string"
+}
+
 variable "name_prefix" {
   description = "A prefix for names of objects created by this module"
   type = "string"
