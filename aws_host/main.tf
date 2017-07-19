@@ -24,6 +24,7 @@ resource "null_resource" "instance_salt_configuration" {
   connection {
     host = "${aws_instance.instance.public_dns}"
     private_key = "${file(var.key_file)}"
+    timeout = "60m"
   }
 
   provisioner "file" {
