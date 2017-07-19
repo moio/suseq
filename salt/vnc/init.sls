@@ -14,7 +14,10 @@ vnc-password:
       - sls: base-system
 
 tigervnc:
-  pkg.latest
+  pkg.latest:
+    - pkgs:
+      - tigervnc
+      - xorg-x11-Xvnc
 
 tigervnc-service:
   file.managed:
